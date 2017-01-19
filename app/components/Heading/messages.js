@@ -9,5 +9,9 @@ export default defineMessages({
   myPosts: {
     id: 'app.components.Heading.myPosts',
     defaultMessage: 'My Posts',
-  }
+  },
+  createPost: {
+    id: 'app.components.Heading.createPost',
+    defaultMessage: 'Create Post',
+  },
 });

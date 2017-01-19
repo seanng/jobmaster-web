@@ -6,18 +6,17 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { getView, getPosts, getParticipantList } from './selectors';
 import { switchView, setParticipantList } from './actions';
-import messages from './messages';
 
 // Components
 import Heading from 'components/Heading';
 import Tab from 'components/Tab';
-import Filter from 'components/Filter'
-import Feed from 'components/Feed'
-import ParticipantList from 'components/ParticipantList'
+import CreatePostButton from 'components/CreatePostButton';
+import Filter from 'components/Filter';
+import Feed from 'components/Feed';
+import ParticipantList from 'components/ParticipantList';
 
 export class MyPosts extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -33,6 +32,7 @@ export class MyPosts extends React.Component { // eslint-disable-line react/pref
             title={'permanent'}
             clickTab={this.props.clickTab.bind(this)}
             view={this.props.view} />
+          <CreatePostButton />
         </div>
         <div className='row'>
           <div className='col-sm-3'>
