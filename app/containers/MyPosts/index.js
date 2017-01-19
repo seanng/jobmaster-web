@@ -8,8 +8,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { getView, getPosts } from './selectors';
-import { switchView } from './actions';
+import { getView, getPosts, getParticipantList } from './selectors';
+import { switchView, setParticipantList } from './actions';
 import messages from './messages';
 
 // Components
@@ -27,11 +27,11 @@ export class MyPosts extends React.Component { // eslint-disable-line react/pref
           <Heading title={'myPosts'} />
           <Tab
             title={'temporary'}
-            click={this.props.clickTab.bind(this)}
+            clickTab={this.props.clickTab.bind(this)}
             view={this.props.view} />
           <Tab
             title={'permanent'}
-            click={this.props.clickTab.bind(this)}
+            clickTab={this.props.clickTab.bind(this)}
             view={this.props.view} />
         </div>
         <div className='row'>
@@ -39,10 +39,13 @@ export class MyPosts extends React.Component { // eslint-disable-line react/pref
             <Filter />
           </div>
           <div className='col-sm-6'>
-            <Feed posts={this.props.posts}/>
+            <Feed
+              posts={this.props.posts}
+              clickPost={this.props.clickPost.bind(this)}/>
           </div>
           <div className='col-sm-3'>
-            <ParticipantList />
+            <ParticipantList
+              participants={this.props.participants} />
           </div>
         </div>
       </div>
@@ -52,17 +55,22 @@ export class MyPosts extends React.Component { // eslint-disable-line react/pref
 
 MyPosts.propTypes = {
   clickTab: PropTypes.func.isRequired,
+  clickPost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   view: getView(),
-  posts: getPosts()
+  posts: getPosts(),
+  participants: getParticipantList()
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  clickTab: (evt) => {
-    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    dispatch(switchView(evt));
+  clickTab: (viewTitle) => {
+    dispatch(switchView(viewTitle));
+  },
+  clickPost: (participants) => {
+    // if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    dispatch(setParticipantList(participants));
   }
 });
 

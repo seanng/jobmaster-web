@@ -20,8 +20,16 @@ const getPosts = () => createSelector(
   }
 );
 
+const getParticipantList = () => createSelector(
+  selectMyPostsDomain(),
+  (substate) => {
+    return substate.get('participantList')
+  }
+);
+
 export {
   selectMyPostsDomain,
   getView,
-  getPosts
+  getPosts,
+  getParticipantList
 };
