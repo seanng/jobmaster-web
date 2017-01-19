@@ -10,8 +10,9 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
+import ParticipantListEntry from 'components/ParticipantListEntry'
+
 const ParticipantList = ({participants}) => {
-  console.log(participants)
   if (!participants) {
     return (<div />)
   } else if (participants.size) {

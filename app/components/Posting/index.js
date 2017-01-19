@@ -26,7 +26,7 @@ function Posting({post, clickPost}) {
   return (
     <div onClick={clickPost.bind(this, participants)}>
       <FormattedMessage {...messages.header} />
-      {date}
+      {jobType}
     </div>
   );
 }

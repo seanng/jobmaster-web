@@ -8,23 +8,17 @@ const selectMyPostsDomain = () => (state) => state.get('myPosts');
 // Get the view from the "myPosts" substate
 const getView = () => createSelector(
   selectMyPostsDomain(),
-  (substate) => {
-    return substate.get('view')
-  }
+  (substate) => substate.get('view')
 );
 
 const getPosts = () => createSelector(
   selectMyPostsDomain(),
-  (substate) => {
-    return substate.get('posts')
-  }
+  (substate) => substate.get('posts')
 );
 
 const getParticipantList = () => createSelector(
   selectMyPostsDomain(),
-  (substate) => {
-    return substate.get('participantList')
-  }
+  (substate) => substate.get('participantList')
 );
 
 export {

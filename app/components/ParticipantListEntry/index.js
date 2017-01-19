@@ -10,10 +10,10 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function ParticipantListEntry({key, participant}) {
+function ParticipantListEntry({participant}) {
   return (
     <div>
-      <FormattedMessage {...messages.header} />
+      {participant.get('name')}
     </div>
   );
 }
