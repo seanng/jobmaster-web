@@ -16,6 +16,7 @@ import { setFormType } from './actions';
 // Components
 import Heading from 'components/Heading';
 import SelectPostType from 'components/SelectPostType';
+import CreatePostForm from 'components/CreatePostForm';
 
 export class CreatePost extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -27,6 +28,8 @@ export class CreatePost extends React.Component { // eslint-disable-line react/p
         <SelectPostType
           selected={this.props.formType}
           clickPostType={this.props.clickPostType.bind(this)} />
+        <CreatePostForm
+          formType={this.props.formType} />
       </div>
     );
   }
