@@ -10,10 +10,18 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function Feed() {
+// import components
+import Posting from 'components/Posting';
+
+
+const Feed = ({posts}) => {
   return (
     <div>
-      <FormattedMessage {...messages.header} />
+      {
+        posts.map((post, i)=> <Posting
+          key={i}
+          post={post} />)
+      }
     </div>
   );
 }

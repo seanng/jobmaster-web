@@ -9,12 +9,19 @@ const selectMyPostsDomain = () => (state) => state.get('myPosts');
 const getView = () => createSelector(
   selectMyPostsDomain(),
   (substate) => {
-    console.log('the new view.', substate.get('view'))
     return substate.get('view')
+  }
+);
+
+const getPosts = () => createSelector(
+  selectMyPostsDomain(),
+  (substate) => {
+    return substate.get('posts')
   }
 );
 
 export {
   selectMyPostsDomain,
-  getView
+  getView,
+  getPosts
 };

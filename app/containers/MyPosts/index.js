@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { getView } from './selectors';
+import { getView, getPosts } from './selectors';
 import { switchView } from './actions';
 import messages from './messages';
 
@@ -21,7 +21,6 @@ import ParticipantList from 'components/ParticipantList'
 
 export class MyPosts extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    console.log('the state is:', this.props);
     return (
       <div className='container'>
         <div className='row'>
@@ -40,7 +39,7 @@ export class MyPosts extends React.Component { // eslint-disable-line react/pref
             <Filter />
           </div>
           <div className='col-sm-6'>
-            <Feed />
+            <Feed posts={this.props.posts}/>
           </div>
           <div className='col-sm-3'>
             <ParticipantList />
@@ -57,6 +56,7 @@ MyPosts.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   view: getView(),
+  posts: getPosts()
 });
 
 const mapDispatchToProps = (dispatch) => ({
