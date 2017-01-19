@@ -14,12 +14,13 @@ import messages from './messages';
 import Posting from 'components/Posting';
 
 
-const Feed = ({posts}) => {
+const Feed = ({posts, clickPost}) => {
   return (
     <div>
       {
         posts.map((post, i)=> <Posting
           key={i}
+          clickPost={clickPost}
           post={post} />)
       }
     </div>

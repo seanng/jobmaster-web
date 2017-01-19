@@ -1,6 +1,6 @@
 /**
 *
-* GuestList
+* ParticipantListEntry
 *
 */
 
@@ -10,7 +10,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function GuestList() {
+function ParticipantListEntry({key, participant}) {
   return (
     <div>
       <FormattedMessage {...messages.header} />
@@ -18,8 +18,8 @@ function GuestList() {
   );
 }
 
-GuestList.propTypes = {
+ParticipantListEntry.propTypes = {
 
 };
 
-export default GuestList;
+export default ParticipantListEntry;

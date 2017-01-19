@@ -8,6 +8,10 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.components.ParticipantList.header',
-    defaultMessage: 'This is the ParticipantList component !',
+    defaultMessage: 'Participants',
+  },
+  noParticipants: {
+    id: 'app.components.ParticipantList.noParticipants',
+    defaultMessage: 'No Participants Yet',
   },
 });

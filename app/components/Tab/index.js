@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function Tab({title, click, view}) {
+function Tab({title, clickTab, view}) {
   console.log('title', title, 'view', view);
   const Span = title === view ? styled.span`
     color: blue;
@@ -20,7 +20,7 @@ function Tab({title, click, view}) {
 
   return (
     <Span
-      onClick={click.bind(this, title)}
+      onClick={clickTab.bind(this, title)}
     >
       <FormattedMessage {...messages[title]} />
     </Span>
