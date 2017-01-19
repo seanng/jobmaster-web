@@ -10,15 +10,13 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-const Title = styled.span`
-  color: red;
-`;
+import H1 from 'components/H1';
 
 function Heading({title}) {
   return (
-    <Title>
+    <H1>
       <FormattedMessage {...messages[title]} />
-    </Title>
+    </H1>
   );
 }
 
