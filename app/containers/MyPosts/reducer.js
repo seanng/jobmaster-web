@@ -110,7 +110,15 @@ let permPosts = [{
 const initialState = fromJS({
   view: 'temporary',
   participantList: null,
-  posts: tempPosts
+  posts: tempPosts,
+  filter: {
+    times: {
+      start: '00:00',
+      end: '23:59'
+    },
+    status: 'all',
+    search: ''
+  }
 });
 
 

@@ -21,9 +21,15 @@ const getParticipantList = () => createSelector(
   (substate) => substate.get('participantList')
 );
 
+const getFilter = () => createSelector(
+  selectMyPostsDomain(),
+  (substate) => substate.get('filter')
+);
+
 export {
   selectMyPostsDomain,
   getView,
   getPosts,
-  getParticipantList
+  getParticipantList,
+  getFilter
 };

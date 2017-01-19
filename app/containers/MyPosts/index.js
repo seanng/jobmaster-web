@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { getView, getPosts, getParticipantList } from './selectors';
+import { getView, getPosts, getParticipantList, getFilter } from './selectors';
 import { switchView, setParticipantList } from './actions';
 
 // Components
@@ -23,20 +23,28 @@ export class MyPosts extends React.Component { // eslint-disable-line react/pref
     return (
       <div className='container'>
         <div className='row'>
-          <Heading title={'myPosts'} />
-          <Tab
-            title={'temporary'}
-            clickTab={this.props.clickTab.bind(this)}
-            view={this.props.view} />
-          <Tab
-            title={'permanent'}
-            clickTab={this.props.clickTab.bind(this)}
-            view={this.props.view} />
-          <CreatePostButton />
+          <div className='col-sm-4'>
+            <Heading title={'myPosts'} />
+          </div>
+          <div className='col-sm-4'>
+            <Tab
+              title={'temporary'}
+              clickTab={this.props.clickTab.bind(this)}
+              view={this.props.view} />
+            <Tab
+              title={'permanent'}
+              clickTab={this.props.clickTab.bind(this)}
+              view={this.props.view} />
+          </div>
+          <div className='col-sm-4'>
+            <CreatePostButton />
+          </div>
         </div>
         <div className='row'>
           <div className='col-sm-3'>
-            <Filter />
+            <Filter
+              view={this.props.view}
+              filter={this.props.selectedFilter} />
           </div>
           <div className='col-sm-6'>
             <Feed
@@ -61,15 +69,16 @@ MyPosts.propTypes = {
 const mapStateToProps = createStructuredSelector({
   view: getView(),
   posts: getPosts(),
-  participants: getParticipantList()
+  participants: getParticipantList(),
+  selectedFilter: getFilter()
 });
 
 const mapDispatchToProps = (dispatch) => ({
   clickTab: (viewTitle) => {
+    dispatch(setParticipantList(null));
     dispatch(switchView(viewTitle));
   },
   clickPost: (participants) => {
-    // if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(setParticipantList(participants));
   }
 });

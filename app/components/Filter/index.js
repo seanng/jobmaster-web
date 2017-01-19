@@ -10,10 +10,21 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function Filter() {
+import FilterSearchBar from 'components/FilterSearchBar';
+import FilterTimeSlider from 'components/FilterTimeSlider';
+import FilterStatusButtons from 'components/FilterStatusButtons';
+
+function Filter({view, filter}) {
+
+  const times  = filter.get('times'),
+        status = filter.get('status'),
+        search = filter.get('search');
+
   return (
     <div>
-      <FormattedMessage {...messages.header} />
+      <FilterSearchBar />
+      {view === 'temporary' && <FilterTimeSlider times={times} />}
+      <FilterStatusButtons active={status} />
     </div>
   );
 }
