@@ -14,7 +14,7 @@ import FilterSearchBar from 'components/FilterSearchBar';
 import FilterTimeSlider from 'components/FilterTimeSlider';
 import FilterStatusButtons from 'components/FilterStatusButtons';
 
-function Filter({view, filter}) {
+function Filter({view, filter, clickStatusButton}) {
 
   const times  = filter.get('times'),
         status = filter.get('status'),
@@ -24,7 +24,7 @@ function Filter({view, filter}) {
     <div>
       <FilterSearchBar />
       {view === 'temporary' && <FilterTimeSlider times={times} />}
-      <FilterStatusButtons active={status} />
+      <FilterStatusButtons active={status} clickStatusButton={clickStatusButton}/>
     </div>
   );
 }

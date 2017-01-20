@@ -12,13 +12,13 @@ import messages from './messages';
 
 
 
-function FilterStatusButtons({active}) {
+function FilterStatusButtons({active, clickStatusButton}) {
 
   const StatusButton = (status) => {
     let buttonColor = status === active ? 'btn-primary' : 'btn-default';
 
     return (
-      <button className={`btn ${buttonColor}`}>
+      <button onClick={clickStatusButton.bind(this, 'status', status)} className={`btn ${buttonColor}`}>
         <FormattedMessage {...messages[status]} />
       </button>
     )

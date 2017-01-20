@@ -6,19 +6,34 @@
 
 import {
   SWITCH_VIEW,
-  SET_PARTICIPANT_LIST
+  SET_PARTICIPANT_LIST,
+  SET_FILTER
 } from './constants';
 
-export function switchView(view) {
+function switchView(view) {
   return {
     type: SWITCH_VIEW,
     view
   };
 }
 
-export function setParticipantList(participants) {
+function setParticipantList(participants) {
   return {
     type: SET_PARTICIPANT_LIST,
     participants
   }
+}
+
+function setFilter(key, value) {
+  return {
+    type: SET_FILTER,
+    key,
+    value
+  }
+}
+
+export {
+  switchView,
+  setParticipantList,
+  setFilter
 }

@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { getView, getPosts, getParticipantList, getFilter } from './selectors';
-import { switchView, setParticipantList } from './actions';
+import { switchView, setParticipantList, setFilter } from './actions';
 
 // Components
 import Heading from 'components/Heading';
@@ -44,7 +44,8 @@ export class MyPosts extends React.Component { // eslint-disable-line react/pref
           <div className='col-sm-3'>
             <Filter
               view={this.props.view}
-              filter={this.props.selectedFilter} />
+              filter={this.props.selectedFilter}
+              clickStatusButton={this.props.clickStatusButton.bind(this)}/>
           </div>
           <div className='col-sm-6'>
             <Feed
@@ -80,6 +81,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   clickPost: (participants) => {
     dispatch(setParticipantList(participants));
+  },
+  clickStatusButton: (key, value) => {
+    dispatch(setFilter(key, value))
   }
 });
 

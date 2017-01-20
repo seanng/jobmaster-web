@@ -7,7 +7,8 @@
 import { fromJS } from 'immutable';
 import {
   SWITCH_VIEW,
-  SET_PARTICIPANT_LIST
+  SET_PARTICIPANT_LIST,
+  SET_FILTER
 } from './constants';
 
 
@@ -112,10 +113,8 @@ const initialState = fromJS({
   participantList: null,
   posts: tempPosts,
   filter: {
-    times: {
-      start: '00:00',
-      end: '23:59'
-    },
+    startTime: '00:00',
+    endTime: '23:59',
     status: 'all',
     search: ''
   }
@@ -126,10 +125,16 @@ function myPostsReducer(state = initialState, action) {
   switch (action.type) {
 
     case SWITCH_VIEW:
-      let posts = action.view === 'temporary' ? tempPosts : permPosts;
+      const posts = action.view === 'temporary' ? tempPosts : permPosts;
 
       return state
-        .merge({view: action.view, posts: posts})
+        .merge({view: action.view, posts: posts});
+
+    case SET_FILTER:
+      const filterSubState = state.get('filter');
+
+      return state
+        .set('filter', filterSubState.set(action.key, action.value));
 
     case SET_PARTICIPANT_LIST:
       return state
