@@ -1,8 +1,3 @@
-/*
- * Tab Messages
- *
- * This contains all the text for the Tab component.
- */
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
@@ -13,5 +8,13 @@ export default defineMessages({
   permanent: {
     id: 'app.components.Tab.permanent',
     defaultMessage: 'Permanent',
+  },
+  faq: {
+    id: 'app.components.Tab.faq',
+    defaultMessage: 'FAQ',
+  },
+  contactUs: {
+    id: 'app.components.Tab.contactUs',
+    defaultMessage: 'Contact Us',
   },
 });

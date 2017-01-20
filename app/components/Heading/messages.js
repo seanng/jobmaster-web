@@ -14,4 +14,8 @@ export default defineMessages({
     id: 'app.components.Heading.createPost',
     defaultMessage: 'Create Post',
   },
+  help: {
+    id: 'app.components.Heading.help',
+    defaultMessage: 'Help',
+  },
 });

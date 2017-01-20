@@ -1,9 +1,3 @@
-/*
- *
- * MyPosts actions
- *
- */
-
 import {
   SWITCH_VIEW,
   SET_PARTICIPANT_LIST,

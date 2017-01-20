@@ -50,7 +50,7 @@ export class MyPosts extends React.Component { // eslint-disable-line react/pref
           <div className='col-sm-6'>
             <Feed
               posts={this.props.posts}
-              clickPost={this.props.clickPost.bind(this)}/>
+              clickPost={this.props.clickPost.bind(this)} />
           </div>
           <div className='col-sm-3'>
             <ParticipantList
@@ -83,7 +83,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setParticipantList(participants));
   },
   clickStatusButton: (key, value) => {
-    dispatch(setFilter(key, value))
+    dispatch(setFilter(key, value));
+    // dispatch(filterPosts())
   }
 });
 

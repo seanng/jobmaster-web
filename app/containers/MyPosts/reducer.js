@@ -126,13 +126,11 @@ function myPostsReducer(state = initialState, action) {
 
     case SWITCH_VIEW:
       const posts = action.view === 'temporary' ? tempPosts : permPosts;
-
       return state
         .merge({view: action.view, posts: posts});
 
     case SET_FILTER:
       const filterSubState = state.get('filter');
-
       return state
         .set('filter', filterSubState.set(action.key, action.value));
 
