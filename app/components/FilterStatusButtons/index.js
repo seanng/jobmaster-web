@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -15,12 +15,19 @@ import messages from './messages';
 function FilterStatusButtons({active, clickStatusButton}) {
 
   const StatusButton = (status) => {
-    let buttonColor = status === active ? 'btn-primary' : 'btn-default';
+
+    const StyledButton = status === active ? styled.div`
+      color: black;
+      font-weight: 600;
+    ` : styled.div`
+      color: gray;
+      cursor: pointer;
+    `
 
     return (
-      <button onClick={clickStatusButton.bind(this, 'status', status)} className={`btn ${buttonColor}`}>
+      <StyledButton onClick={clickStatusButton.bind(this, 'status', status)}>
         <FormattedMessage {...messages[status]} />
-      </button>
+      </StyledButton>
     )
   }
 
