@@ -12,10 +12,12 @@ import messages from './messages';
 
 function Tab({title, clickTab, view}) {
   const Span = title === view ? styled.span`
-    color: blue;
+    color: black;
+    font-weight: 600;
   ` : styled.span`
-    color: green;
-  `;
+    color: gray;
+    cursor: pointer;
+  `
 
   return (
     <Span
