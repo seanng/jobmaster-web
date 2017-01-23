@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { getView, getPosts, getParticipantList, getFilter } from './selectors';
-import { switchView, setParticipantList, setFilter } from './actions';
+import { loadPosts, switchView, setParticipantList, setFilter } from './actions';
 
 // Components
 import Heading from 'components/Heading';
@@ -19,6 +19,13 @@ import Feed from 'components/Feed';
 import ParticipantList from 'components/ParticipantList';
 
 export class MyPosts extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  /**
+   * when initial state is not null, submit the form to load repos
+   */
+  componentWillMount() {
+    this.props.preloadData(1);
+  }
+
   render() {
     return (
       <div className='container'>
@@ -75,6 +82,9 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  preloadData: (page) => {
+    dispatch(loadPosts(page));
+  },
   clickTab: (viewTitle) => {
     dispatch(setParticipantList(null));
     dispatch(switchView(viewTitle));

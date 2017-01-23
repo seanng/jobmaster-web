@@ -1,8 +1,32 @@
 import {
   SWITCH_VIEW,
   SET_PARTICIPANT_LIST,
-  SET_FILTER
+  SET_FILTER,
+  LOAD_POSTS,
+  LOAD_POSTS_SUCCESS,
+  LOAD_POSTS_ERROR
 } from './constants';
+
+function loadPosts(page) {
+  return {
+    type: LOAD_POSTS,
+    page
+  }
+}
+
+function postsLoaded(posts) {
+  return {
+    type: LOAD_POSTS_SUCCESS,
+    posts
+  }
+}
+
+function postLoadingError(error) {
+  return {
+    type: LOAD_POSTS_ERROR,
+    error
+  }
+}
 
 function switchView(view) {
   return {
@@ -29,5 +53,8 @@ function setFilter(key, value) {
 export {
   switchView,
   setParticipantList,
-  setFilter
+  setFilter,
+  postsLoaded,
+  loadPosts,
+  postLoadingError
 }

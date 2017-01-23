@@ -8,7 +8,10 @@ import { fromJS } from 'immutable';
 import {
   SWITCH_VIEW,
   SET_PARTICIPANT_LIST,
-  SET_FILTER
+  SET_FILTER,
+  LOAD_POSTS,
+  LOAD_POSTS_SUCCESS,
+  LOAD_POSTS_ERROR
 } from './constants';
 
 
@@ -109,9 +112,12 @@ let permPosts = [{
 }]
 
 const initialState = fromJS({
+  loading: false,
+  error: false,
   view: 'temporary',
+  loading: true,
   participantList: null,
-  posts: tempPosts,
+  posts: false,
   filter: {
     startTime: '00:00',
     endTime: '23:59',
@@ -123,6 +129,23 @@ const initialState = fromJS({
 
 function myPostsReducer(state = initialState, action) {
   switch (action.type) {
+    case LOAD_POSTS:
+      return state
+        .set('loading', true)
+        .set('error', false)
+        .set('posts', false);
+
+    case LOAD_POSTS_SUCCESS:
+      console.log('action.posts', action.posts);
+      return state
+        .set('loading', false)
+        .set('posts', action.posts);
+
+    case LOAD_POSTS_ERROR:
+      console.log('action.error', action.error);
+      return state
+        .set('loading', false)
+        .set('error', action.error);
 
     case SWITCH_VIEW:
       const posts = action.view === 'temporary' ? tempPosts : permPosts;
